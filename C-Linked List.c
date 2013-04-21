@@ -67,11 +67,13 @@ int main()
             if(bos_mu(ilk))
                 printf("Salon bos\n");
             else
+            {
                 bir_aday=bastan_cik(&ilk,&son);
-            printf("\nNO AD SOYAD        BOY\n");
-            printf("-- --------------- ---\n");
-            printf(" %d %-15s %-15d\n",bir_aday->no,bir_aday->ad_soyad,bir_aday->boy);
-            free(bir_aday);
+                printf("\nNO AD SOYAD        BOY\n");
+                printf("-- --------------- ---\n");
+                printf(" %d %-15s %-15d\n",bir_aday->no,bir_aday->ad_soyad,bir_aday->boy);
+                free(bir_aday);
+            }
             break;
         case 3:
             listele(ilk);

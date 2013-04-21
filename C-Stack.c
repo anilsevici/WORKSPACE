@@ -23,9 +23,6 @@ int main()
 
     printf("\nOrtaek ifadenin sonek ifadeye donusmus hali:%s\n",sonek);
 
-
-
-
     return 0;
 }
 
@@ -47,14 +44,14 @@ void ortaek_sonek_cevir(char *ortaek,char *sonek)
                 sonek[j]=pop(yigin,&tepe);
                 j++;
             }
-            while(bos_mu(tepe)==0 && oncelik_bulma(tepe_eleman(yigin,tepe))>=oncelik_bulma(ortaek[i]));
+            while(!bos_mu(tepe) && oncelik_bulma(tepe_eleman(yigin,tepe))>=oncelik_bulma(ortaek[i]));
 
             push(yigin,&tepe,ortaek[i]);
         }
 
     }
 
-    while(bos_mu(tepe)==0)
+    while(!bos_mu(tepe))
     {
         sonek[j]=pop(yigin,&tepe);
         j++;
@@ -116,7 +113,5 @@ int tepe_eleman(int *yigin,int tepe)
 
 int bos_mu(int tepe)
 {
-    if(tepe==-1)
-        return 1;
-    else return 0;
+    return tepe==-1;
 }

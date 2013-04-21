@@ -65,7 +65,7 @@ int main()
             while(cevap=='E' || cevap=='e');
             break;
         case 2:
-            if(bos_mu(on)==1)
+            if(bos_mu(on))
                 printf("Salon bos\n");
             else
             {
@@ -78,7 +78,7 @@ int main()
             }
             break;
         case 3:
-            if(bos_mu(on)==1)
+            if(bos_mu(on))
                 puts("Bekleyen aday yok.");
             else
                 printf("Bekleyen aday sayisi:%d",eleman_say(on,arka));
@@ -105,8 +105,7 @@ int eleman_say(int on,int arka)
 
 int bos_mu(int on)
 {
-    if (on==-1) return 1;
-    else return 0;
+    return on==-1;
 }
 
 void dairesel_ekle(struct aday *kuyruk, int *on, int *arka, struct aday yeni)
@@ -141,7 +140,7 @@ void listele(struct aday *kuyruk,int on,int arka)
 {
     int i;
 
-    if(bos_mu(on)==0)
+    if(!bos_mu(on))
     {
 
         printf("\n NO    AD SOYAD        BOY\n");
