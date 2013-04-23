@@ -132,12 +132,13 @@ struct aday *bastan_cik(struct aday **ilk,struct aday **son)
 
     gecici=*ilk;
 
+    *ilk=(*ilk)->sonraki;
+
     if(*ilk==NULL)
     {
         *son=NULL;
     }
 
-    *ilk=(*ilk)->sonraki;
     return gecici;
 }
 

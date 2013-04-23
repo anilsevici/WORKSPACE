@@ -5,6 +5,7 @@
 #define MAX_STACK 20
 
 void ortaek_sonek_cevir(char *,char *);
+int hesapla(char *);
 int oncelik_bulma(char);
 void push(int *,int *,int);
 int pop(int *,int *);
@@ -22,6 +23,7 @@ int main()
     ortaek_sonek_cevir(ortaek,sonek);
 
     printf("\nOrtaek ifadenin sonek ifadeye donusmus hali:%s\n",sonek);
+    printf("Girilen ifadenin sonucu: %d\n",hesapla(sonek));
 
     return 0;
 }
@@ -59,6 +61,52 @@ void ortaek_sonek_cevir(char *ortaek,char *sonek)
     sonek[j]='\0';
 
 }
+
+int hesapla(char *sonek)
+{
+    int yigin[MAX_STACK];
+    int tepe=-1;
+    int i,sayi,operand1,operand2;
+
+    for(i=0; sonek[i]!='\0'; ++i)
+    {
+        if(isdigit(sonek[i]))
+        {
+            sayi=sonek[i]-48;
+            push(yigin,&tepe,sayi);
+        }
+        else if(isalpha(sonek[i]))
+        {
+            printf("%c nin degerini giriniz(tamsayi): ",sonek[i]);
+            scanf("%d",&sayi);
+            push(yigin,&tepe,sayi);
+        }
+        else
+        {
+            operand2=pop(yigin,&tepe);
+            operand1=pop(yigin,&tepe);
+
+            switch(sonek[i])
+            {
+            case '*':
+                push(yigin,&tepe,operand1*operand2);
+                break;
+            case '/':
+                push(yigin,&tepe,operand1/operand2);
+                break;
+            case '+':
+                push(yigin,&tepe,operand1+operand2);
+                break;
+            case '-':
+                push(yigin,&tepe,operand1-operand2);
+                break;
+            }
+        }
+    }
+
+    return pop(yigin,&tepe);
+}
+
 
 int oncelik_bulma(char karakter)
 {
