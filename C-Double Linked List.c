@@ -210,7 +210,7 @@ struct ogrenci *ara(struct ogrenci *liste_basi_ptr, int aranan_no)//ogrenci list
     return NULL;
 }
 
-void d_cift_baglidan_dugum_tasi(struct ogrenci *liste_basi,struct ogrenci *dugum)//adresi verilen dugumu listeden cikarir ama yok etmez
+void d_cift_baglidan_dugum_tasi(struct ogrenci *liste_basi,struct ogrenci *dugum)
 {
     struct ogrenci *gecici;
     gecici=dugum;
